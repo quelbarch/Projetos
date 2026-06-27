@@ -6,6 +6,10 @@ public class Veiculo {
 		private int velocidade;
 		
 		public Veiculo(String modelo, int velocidade) {
+			
+			Validacao.validarModelo(modelo);
+			Validacao.validarVelocidade(velocidade);
+			
 			this.modelo = modelo;
 			this.velocidade = velocidade;
 		}
@@ -15,6 +19,7 @@ public class Veiculo {
 		}
 
 		public void setModelo(String modelo) {
+			Validacao.validarModelo(modelo);
 			this.modelo = modelo;
 		}
 
@@ -23,16 +28,20 @@ public class Veiculo {
 		}
 
 		public void setVelocidade(int velocidade) {
+			Validacao.validarVelocidade(velocidade);
 			this.velocidade = velocidade;
 		}
 		
 		public void acelerar(int valor) {
-			if (valor <= 0) {
-			    throw new IllegalArgumentException("Aceleração inválida!");
-			}
+		
+			Validacao.validarAceleracao(valor);
 			
 			this.velocidade += valor;
 			
       }
-   }
 
+		public void visualizar() {
+			System.out.println("Modelo: " + modelo + " | Velocidade: " + velocidade + " km/h");
+			
+		}
+   }
