@@ -25,16 +25,13 @@ public class CarroEletrico extends Veiculo {
 
         Validacao.validarAceleracao(valor);
         
-        int consumo = valor / 3;
+        int consumo = Math.max(1, valor / 3);
         
         Validacao.validarBateriaSuficiente(nivelBateria, consumo);
         setVelocidade(getVelocidade() + valor);
 
         nivelBateria -= consumo;
         
-        if (nivelBateria < 0) {
-        	nivelBateria = 0;
-        }
     }
 
     @Override
